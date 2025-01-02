@@ -4,9 +4,11 @@ export default clerkMiddleware();
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
+    // Match all app routes except _next and static files
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    // Always run for API routes
+    // Always match API routes
     "/(api|trpc)(.*)",
+    // Explicitly match documents/[id] route and all dynamic routes
+    "/documents/:path*",
   ],
 };
